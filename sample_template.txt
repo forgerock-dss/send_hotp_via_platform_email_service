@@ -1,0 +1,9 @@
+![](<https://www.forgerock.com/sites/default/files/2020-11/one-cloud-two-solutions.svg>)
+
+Hi {{object.givenName}}
+
+Here is your One Time Password. Please enter it into the login browser window:
+
+# {{object.otp}}
+
+ForgeRock
