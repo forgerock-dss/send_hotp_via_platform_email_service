@@ -1,9 +1,9 @@
 /**
- * @file This script sends a templated HOTP to a user via the IDM SendGrid Email Service
- * NOTE - The use of SendGrid is not supported in Production and must be changed to your own email service
- * Steps are here: https://backstage.forgerock.com/docs/idcloud/latest/tenants/email-provider.html#external_smtp_email_server
+ * @file This script sends a HOTP to a user via the Platform Email Service
+ * NOTE - In Production your own SMTP Server needs to be used. To do this check out:
+ * https://backstage.forgerock.com/docs/idcloud/latest/tenants/email-provider.html#external_smtp_email_server
  * @version 0.2.0
- * @keywords email mail hotp sharedState transientState templateService
+ * @keywords email mail hotp sharedState transientState
  */
 
 /**
