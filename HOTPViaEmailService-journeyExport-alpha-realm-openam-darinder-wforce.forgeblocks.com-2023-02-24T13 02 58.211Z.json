@@ -1,0 +1,448 @@
+{
+  "meta": {
+    "origin": "https://openam-darinder-wforce.forgeblocks.com/platform/?realm=alpha#/journeys/HOTPViaEmailService",
+    "exportedBy": "darinder.shokar@forgerock.com",
+    "exportDate": "2023-02-24T13:02:58.211Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "HOTPViaEmailService"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "HOTPViaEmailService": {
+      "tree": {
+        "_id": "HOTPViaEmailService",
+        "_rev": "2137678094",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[\"Authentication\"]"
+        },
+        "entryNodeId": "1dc01bd3-51ea-4380-aed2-df27012a2245",
+        "nodes": {
+          "1dc01bd3-51ea-4380-aed2-df27012a2245": {
+            "x": 96,
+            "y": 82.50000000000003,
+            "connections": {
+              "outcome": "9879cc77-ef25-48ed-9391-74c9f9bca93e"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "2b110793-333c-42c4-b91b-bb14d6f3f848": {
+            "x": 1017,
+            "y": 161,
+            "connections": {
+              "outcome": "6d9931fa-3311-4b65-ba65-098b09808349"
+            },
+            "nodeType": "OneTimePasswordGeneratorNode",
+            "displayName": "HOTP Generator"
+          },
+          "46b65816-37dc-4636-9226-90bc746e7b46": {
+            "x": 540,
+            "y": 121.5,
+            "connections": {
+              "success": "98350b43-301c-44a5-81bd-291e70ad350f"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Get IDM Access Token"
+          },
+          "6d9931fa-3311-4b65-ba65-098b09808349": {
+            "x": 1218,
+            "y": 263,
+            "connections": {
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "noMail": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "sent": "d8b444fa-79b0-40e1-9575-30e95dbc7ac5"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Send Templated HOTP Via Platform Email Service"
+          },
+          "98350b43-301c-44a5-81bd-291e70ad350f": {
+            "x": 793,
+            "y": 128.5,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "2b110793-333c-42c4-b91b-bb14d6f3f848"
+            },
+            "nodeType": "IdentifyExistingUserNode",
+            "displayName": "Identify Existing User"
+          },
+          "9879cc77-ef25-48ed-9391-74c9f9bca93e": {
+            "x": 309,
+            "y": 115.49999999999997,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "46b65816-37dc-4636-9226-90bc746e7b46"
+            },
+            "nodeType": "DataStoreDecisionNode",
+            "displayName": "Data Store Decision"
+          },
+          "b979177d-a577-4a51-b75a-b708dfd2c4ac": {
+            "x": 1218,
+            "y": 123,
+            "connections": {
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "noMail": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "sent": "d8b444fa-79b0-40e1-9575-30e95dbc7ac5"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Send HOTP Via Platform Email Service"
+          },
+          "d8b444fa-79b0-40e1-9575-30e95dbc7ac5": {
+            "x": 1510,
+            "y": 102.61666870117188,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "PageNode",
+            "displayName": "OTP"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 70,
+            "y": 291
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1772,
+            "y": 155.16666666666663
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1763,
+            "y": 537.3333333333334
+          }
+        },
+        "description": "Platform Login Tree",
+        "enabled": true
+      },
+      "nodes": {
+        "1dc01bd3-51ea-4380-aed2-df27012a2245": {
+          "_id": "1dc01bd3-51ea-4380-aed2-df27012a2245",
+          "_rev": "-1901570525",
+          "nodes": [
+            {
+              "_id": "6e8edb15-d88f-4599-9d4f-a108063aa975",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "1264d43e-5dd4-40c1-bb52-162fc8076cfc",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {
+            "en": "New here? <a href=\"#/service/Registration\">Create an account</a><br><a href=\"#/service/ForgottenUsername\">Forgot username?</a><a href=\"#/service/ResetPassword\"> Forgot password?</a>"
+          },
+          "pageHeader": {
+            "en": "Sign In"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "2b110793-333c-42c4-b91b-bb14d6f3f848": {
+          "_id": "2b110793-333c-42c4-b91b-bb14d6f3f848",
+          "_rev": "882432011",
+          "length": 8,
+          "_type": {
+            "_id": "OneTimePasswordGeneratorNode",
+            "name": "HOTP Generator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "46b65816-37dc-4636-9226-90bc746e7b46": {
+          "_id": "46b65816-37dc-4636-9226-90bc746e7b46",
+          "_rev": "-2075240867",
+          "script": "f36e6870-0b7c-4ccb-b2df-b8eb4a370794",
+          "outcomes": [
+            "success",
+            "error"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "success",
+              "displayName": "success"
+            },
+            {
+              "id": "error",
+              "displayName": "error"
+            }
+          ]
+        },
+        "6d9931fa-3311-4b65-ba65-098b09808349": {
+          "_id": "6d9931fa-3311-4b65-ba65-098b09808349",
+          "_rev": "-412238572",
+          "script": "a8838ea2-cdf0-41e5-8ce4-e66f542482b7",
+          "outcomes": [
+            "sent",
+            "noMail",
+            "error"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "sent",
+              "displayName": "sent"
+            },
+            {
+              "id": "noMail",
+              "displayName": "noMail"
+            },
+            {
+              "id": "error",
+              "displayName": "error"
+            }
+          ]
+        },
+        "98350b43-301c-44a5-81bd-291e70ad350f": {
+          "_id": "98350b43-301c-44a5-81bd-291e70ad350f",
+          "_rev": "-1948548127",
+          "identityAttribute": "userName",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "9879cc77-ef25-48ed-9391-74c9f9bca93e": {
+          "_id": "9879cc77-ef25-48ed-9391-74c9f9bca93e",
+          "_rev": "-453190822",
+          "_type": {
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "b979177d-a577-4a51-b75a-b708dfd2c4ac": {
+          "_id": "b979177d-a577-4a51-b75a-b708dfd2c4ac",
+          "_rev": "-894168284",
+          "script": "b6f9c681-cd66-411e-bb0e-563033b7f1a8",
+          "outcomes": [
+            "sent",
+            "noMail",
+            "error"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "sent",
+              "displayName": "sent"
+            },
+            {
+              "id": "noMail",
+              "displayName": "noMail"
+            },
+            {
+              "id": "error",
+              "displayName": "error"
+            }
+          ]
+        },
+        "d8b444fa-79b0-40e1-9575-30e95dbc7ac5": {
+          "_id": "d8b444fa-79b0-40e1-9575-30e95dbc7ac5",
+          "_rev": "660599837",
+          "nodes": [
+            {
+              "_id": "239097d9-7024-46e8-9591-1fcf42cf131f",
+              "nodeType": "OneTimePasswordCollectorDecisionNode",
+              "displayName": "OTP Collector Decision"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please check your email and enter your One Time Passcode"
+          },
+          "pageHeader": {
+            "en": "One Time Passcode Required"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "6e8edb15-d88f-4599-9d4f-a108063aa975": {
+          "_id": "6e8edb15-d88f-4599-9d4f-a108063aa975",
+          "_rev": "-726608900",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "1264d43e-5dd4-40c1-bb52-162fc8076cfc": {
+          "_id": "1264d43e-5dd4-40c1-bb52-162fc8076cfc",
+          "_rev": "156056964",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "239097d9-7024-46e8-9591-1fcf42cf131f": {
+          "_id": "239097d9-7024-46e8-9591-1fcf42cf131f",
+          "_rev": "-1735806108",
+          "passwordExpiryTime": 5,
+          "_type": {
+            "_id": "OneTimePasswordCollectorDecisionNode",
+            "name": "OTP Collector Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "scripts": {
+        "f36e6870-0b7c-4ccb-b2df-b8eb4a370794": {
+          "_id": "f36e6870-0b7c-4ccb-b2df-b8eb4a370794",
+          "name": "get-idm-access-token",
+          "description": "Get an access token via service accounts to access IDM services",
+          "script": "\"/*\\n * The contents of this file are subject to the terms of the Common Development and\\n * Distribution License (the License). You may not use this file except in compliance with the\\n * License.\\n *\\n * You can obtain a copy of the License at legal/LICENSE.md. See the License for the\\n * specific language governing permission and limitations under the License.\\n *\\n * When distributing Covered Software, include this CDDL Header Notice in each file and include\\n * the License file at legal/LICENSE.md. If applicable, add the following below the CDDL\\n * Header, with the fields enclosed by brackets {{}} replaced by your own identifying\\n * information: \\\"Portions copyright {{year}} {{name_of_copyright_owner}}\\\".\\n *\\n * Copyright 2022 ForgeRock AS.\\n */\\n\\n/*\\n * Requires following ESVs\\n *\\n * 1. esv.tenant.fqdn - e.g. openam-demo.forgeblocks.io\\n * 2. esv.idm.service.account.id - e.g. 94ab7670-xxxx-xxxx-xxxx-xxxxxxxxxxxxx\\n * 3. esv.idm.service.account.privatekey - e.g.\\n *     {\\n *       d: \\\"RhpIZ32rNfkoVkQh3pt1me...rDkFL9nBWDOZvXQ2LsFEBc\\\",\\n *       dp: \\\"RfrvtBH_NmzxS......IpJ1vYZS_J0cw\\\",\\n *       dq: \\\"OVO8_yXFRHT...2VREB2b8f8xvIhv5jrQWQ\\\",\\n *       e: \\\"AQAB\\\",\\n *       kty: \\\"RSA\\\",\\n *       n: \\\"5LoH3Fc8IdRg1...K4eUvMEJsjVvfRgzpWCDM0\\\",\\n *       p: \\\"_wjzIYyYcQiNOZdV1Cp7...kjDw\\\",\\n *       q: \\\"5ZeYq0C......6WOaiYw\\\",\\n *       qi: \\\"Z9ECeon...q56tpl2Mu65yqlw\\\",\\n *     }\\n */\\n\\nvar nodeConfig = {\\n  nodeName: \\\"getIdmAccessTokenSa\\\",\\n  tenantFqdnEsv: \\\"esv.tenant.fqdn\\\",\\n  accountIdEsv: \\\"esv.idm.service.account.id\\\",\\n  privateKeyEsv: \\\"esv.idm.service.account.privatekey\\\",\\n  accessTokenStateField: \\\"idmAccessToken\\\",\\n  maxAttempts: 3,\\n  scope: \\\"fr:idm:*\\\",\\n  serviceAccountClientId: \\\"service-account\\\",\\n  jwtValiditySeconds: 10,\\n};\\n\\nvar nodeLogger = {\\n  debug: function (message) {\\n    logger.message(\\\"***\\\" + nodeConfig.nodeName + \\\" \\\" + message);\\n  },\\n  warning: function (message) {\\n    logger.warning(\\\"***\\\" + nodeConfig.nodeName + \\\" \\\" + message);\\n  },\\n  error: function (message) {\\n    logger.error(\\\"***\\\" + nodeConfig.nodeName + \\\" \\\" + message);\\n  },\\n};\\n\\nvar nodeOutcomes = {\\n  SUCCESS: \\\"success\\\",\\n  ERROR: \\\"error\\\",\\n};\\n\\nvar javaImports = JavaImporter(\\n  org.forgerock.openam.auth.node.api.Action,\\n  org.forgerock.json.jose.builders.JwtBuilderFactory,\\n  org.forgerock.json.jose.jwt.JwtClaimsSet,\\n  org.forgerock.json.jose.jws.JwsAlgorithm,\\n  org.forgerock.json.jose.jws.SignedJwt,\\n  org.forgerock.json.jose.jws.handlers.SecretRSASigningHandler,\\n  org.forgerock.json.jose.jwk.RsaJWK,\\n  javax.crypto.spec.SecretKeySpec,\\n  org.forgerock.secrets.SecretBuilder,\\n  org.forgerock.secrets.keys.SigningKey,\\n  java.time.temporal.ChronoUnit,\\n  java.time.Clock,\\n  java.util.UUID\\n);\\n\\nfunction getKeyFromJwk(issuer, jwk) {\\n  var privateKey = javaImports.RsaJWK.parse(jwk).toRSAPrivateKey();\\n\\n  var secretBuilder = new javaImports.SecretBuilder();\\n\\n  secretBuilder\\n    .secretKey(privateKey)\\n    .stableId(issuer)\\n    .expiresIn(\\n      5,\\n      javaImports.ChronoUnit.MINUTES,\\n      javaImports.Clock.systemUTC()\\n    );\\n  return new javaImports.SigningKey(secretBuilder);\\n}\\n\\nfunction getAssertionJwt(accountId, privateKey, audience, validity) {\\n  var signingHandler = new javaImports.SecretRSASigningHandler(\\n    getKeyFromJwk(accountId, privateKey)\\n  );\\n\\n  var iat = new Date().getTime();\\n  var exp = new Date(iat + validity * 1000);\\n\\n  var jwtClaims = new javaImports.JwtClaimsSet();\\n\\n  jwtClaims.setIssuer(accountId);\\n  jwtClaims.setSubject(accountId);\\n  jwtClaims.addAudience(audience);\\n  jwtClaims.setExpirationTime(exp);\\n  jwtClaims.setJwtId(javaImports.UUID.randomUUID());\\n\\n  var jwt = new javaImports.JwtBuilderFactory()\\n    .jws(signingHandler)\\n    .headers()\\n    .alg(javaImports.JwsAlgorithm.RS256)\\n    .done()\\n    .claims(jwtClaims)\\n    .build();\\n\\n  return jwt;\\n}\\n\\nfunction getAccessToken(accountId, privateKey, tenantFqdn, maxAttempts) {\\n  var response = null;\\n  var accessToken = null;\\n  var tokenEndpoint = \\\"https://\\\"\\n    .concat(tenantFqdn)\\n    .concat(\\\"/am/oauth2/access_token\\\");\\n\\n  nodeLogger.debug(\\\"Getting Access Token from endpoint \\\" + tokenEndpoint);\\n\\n  var assertionJwt = getAssertionJwt(\\n    accountId,\\n    privateKey,\\n    tokenEndpoint,\\n    nodeConfig.jwtValiditySeconds\\n  );\\n\\n  if (!assertionJwt) {\\n    nodeLogger.error(\\\"Error getting assertion JWT\\\");\\n    return null;\\n  }\\n\\n  nodeLogger.debug(\\\"Got assertion JWT \\\" + assertionJwt);\\n\\n  for (var attempt = 0; attempt < maxAttempts; attempt++) {\\n    nodeLogger.debug(\\\"Attempt \\\" + (attempt + 1) + \\\" of \\\" + maxAttempts);\\n    try {\\n      var request = new org.forgerock.http.protocol.Request();\\n      request.setUri(tokenEndpoint);\\n      request.setMethod(\\\"POST\\\");\\n      request\\n        .getHeaders()\\n        .add(\\\"Content-Type\\\", \\\"application/x-www-form-urlencoded\\\");\\n\\n      var params = \\\"grant_type=\\\"\\n        .concat(\\n          encodeURIComponent(\\\"urn:ietf:params:oauth:grant-type:jwt-bearer\\\")\\n        )\\n        .concat(\\\"&client_id=\\\")\\n        .concat(encodeURIComponent(nodeConfig.serviceAccountClientId))\\n        .concat(\\\"&assertion=\\\")\\n        .concat(encodeURIComponent(assertionJwt))\\n        .concat(\\\"&scope=\\\")\\n        .concat(encodeURIComponent(nodeConfig.scope));\\n\\n      request.setEntity(params);\\n      response = httpClient.send(request).get();\\n      if (response) {\\n        break;\\n      }\\n    } catch (e) {\\n      nodeLogger.error(\\n        \\\"Failure calling access token endpoint: \\\" +\\n          tokenEndpoint +\\n          \\\" exception:\\\" +\\n          e\\n      );\\n    }\\n  }\\n\\n  if (!response) {\\n    nodeLogger.error(\\\"Bad response\\\");\\n    return null;\\n  }\\n\\n  if (response.getStatus().getCode() !== 200) {\\n    nodeLogger.error(\\n      \\\"Unable to acquire Access Token. HTTP Result: \\\" + response.getStatus()\\n    );\\n    return null;\\n  }\\n\\n  try {\\n    var responseJson = response.getEntity().getString();\\n    nodeLogger.debug(\\\"Response content \\\" + responseJson);\\n    var oauth2response = JSON.parse(responseJson);\\n    accessToken = oauth2response.access_token;\\n    nodeLogger.debug(\\\"Access Token acquired: \\\" + accessToken);\\n    return accessToken;\\n  } catch (e) {\\n    nodeLogger.error(\\\"Error getting access token from response: \\\" + e);\\n  }\\n\\n  return null;\\n}\\n\\n(function () {\\n  try {\\n    nodeLogger.debug(\\\"Node starting\\\");\\n\\n    var accessToken = nodeState.get(nodeConfig.accessTokenStateField);\\n\\n    if (accessToken) {\\n      nodeLogger.debug(\\\"Access token already present: continuing\\\");\\n      action = javaImports.Action.goTo(nodeOutcomes.SUCCESS).build();\\n      return;\\n    }\\n\\n    var tenantFqdn = systemEnv.getProperty(nodeConfig.tenantFqdnEsv);\\n    if (!tenantFqdn) {\\n      nodeLogger.error(\\\"Couldn't get FQDN from esv \\\" + config.tenantFqdnEsv);\\n      action = javaImports.Action.goTo(nodeOutcomes.ERROR).build();\\n      return;\\n    }\\n\\n    var accountId = systemEnv.getProperty(nodeConfig.accountIdEsv);\\n    if (!accountId) {\\n      nodeLogger.error(\\n        \\\"Couldn't get service account id from esv \\\" + nodeConfig.accountIdEsv\\n      );\\n      action = javaImports.Action.goTo(nodeOutcomes.ERROR).build();\\n      return;\\n    }\\n\\n    var privateKey = systemEnv.getProperty(nodeConfig.privateKeyEsv);\\n    if (!privateKey) {\\n      nodeLogger.error(\\n        \\\"Couldn't get private key from esv \\\" + nodeConfig.privateKey\\n      );\\n      action = javaImports.Action.goTo(nodeOutcomes.ERROR).build();\\n      return;\\n    }\\n\\n    accessToken = getAccessToken(\\n      accountId,\\n      privateKey,\\n      tenantFqdn,\\n      nodeConfig.maxAttempts\\n    );\\n\\n    if (!accessToken) {\\n      nodeLogger.error(\\\"Failed to get access token\\\");\\n      action = javaImports.Action.goTo(nodeOutcomes.ERROR).build();\\n      return;\\n    }\\n\\n    nodeLogger.debug(\\\"Success - adding token to transient state\\\");\\n    nodeState.putTransient(nodeConfig.accessTokenStateField, accessToken);\\n    action = javaImports.Action.goTo(nodeOutcomes.SUCCESS).build();\\n  } catch (e) {\\n    nodeLogger.error(\\\"Exception encountered \\\" + e);\\n    action = javaImports.Action.goTo(nodeOutcomes.ERROR).build();\\n    return;\\n  }\\n})();\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        },
+        "a8838ea2-cdf0-41e5-8ce4-e66f542482b7": {
+          "_id": "a8838ea2-cdf0-41e5-8ce4-e66f542482b7",
+          "name": "send-templated-hotp-idm-email-service",
+          "description": "Sends a templated HOTP via the IDM email service",
+          "script": "\"/**\\n * @file This script sends a templated HOTP to a user via the IDM SendGrid Email Service\\n * NOTE - The use of SendGrid is not supported in Production and must be changed to your own email service\\n * Steps are here: https://backstage.forgerock.com/docs/idcloud/latest/tenants/email-provider.html#external_smtp_email_server\\n * @version 0.2.0\\n * @keywords email mail hotp sharedState transientState templateService\\n */\\n\\n/**\\n * Environment specific config \\n * Ensure the esv-tenant-fqdn is set as per the steps in this repo:\\n * https://stash.forgerock.org/projects/CS/repos/common_get_access_token_for_idm/browse/src/am\\n */\\n\\n/**\\n * Full Configuration \\n */\\n\\nvar config = {\\n    tenantFqdn: \\\"esv.tenant.fqdn\\\",\\n    ACCESS_TOKEN_STATE_FIELD: \\\"idmAccessToken\\\",\\n    templateID: \\\"otp\\\",\\n    nodeName: \\\"***sendTemplatedHotpIDMEmailService\\\"\\n};\\n\\n/**\\n * Node outcomes\\n */\\n\\nvar NodeOutcome = {\\n    PASS: \\\"sent\\\",\\n    FAIL: \\\"noMail\\\",\\n    ERROR: \\\"error\\\"\\n};\\n\\n/**\\n * Log an HTTP response\\n * \\n * @param {Response} HTTP response object\\n */\\n\\nfunction logResponse(response) {\\n    logger.message(config.nodeName + \\\": Scripted Node HTTP Response: \\\" + response.getStatus() + \\\", Body: \\\" + response.getEntity().getString());\\n}\\n\\n/**\\n * Send email via the IDM Email Service\\n * \\n * @param {string} username - username of the user retrieved from sharedState\\n * @param {string} accessToken - Access Token retrieved from transientState\\n * @param {string} fqdn - Tenant fully qualified domain name retreived from an ESV\\n * @param {string} hotp - HOTP retrieved from transientState\\n * @param {string} mail - mail attribute retrieved from the idRepository. Note if this is a registration journey acquire mail from sharedState\\n * @param {string} givenName - givenName attribute retrieved from the idRepository. Note if this is a registration journey acquire givenName from sharedState\\n */\\n\\nfunction sendMail(username, accessToken, fqdn, hotp, mail, givenName) {\\n    var idmEndpoint = \\\"https://\\\" + fqdn + \\\"/openidm/external/email?_action=sendTemplate\\\";\\n\\n    var response;\\n\\n    logger.message(config.nodeName + \\\": Sending templated email via the IDM email service for user: \\\" + username + \\\" with mail address: \\\" + mail + \\\" and HOTP: \\\" + hotp + \\\" and template: \\\" + config.templateID);\\n\\n    try {\\n        var request = new org.forgerock.http.protocol.Request();\\n        var requestBodyJson = {\\n            \\\"templateName\\\": config.templateID,\\n            \\\"to\\\": mail,\\n            \\\"object\\\": {\\n                \\\"givenName\\\": givenName,\\n                \\\"otp\\\": hotp\\n            }\\n        };\\n        request.setMethod('POST');\\n        request.setUri(idmEndpoint);\\n        request.getHeaders().add(\\\"Authorization\\\", \\\"Bearer \\\" + accessToken);\\n        request.getHeaders().add(\\\"Content-Type\\\", \\\"application/json\\\");\\n        request.setEntity(requestBodyJson);\\n        response = httpClient.send(request).get();\\n    }\\n    catch (e) {\\n        logger.error(config.nodeName + \\\": Unable to call IDM Email endpoint using template: \\\" + config.templateID + \\\" Exception is: \\\" + e);\\n        return NodeOutcome.ERROR;\\n    }\\n    logResponse(response);\\n\\n    if (response.getStatus().getCode() === 200) {\\n        logger.message(config.nodeName + \\\": Email sent for user: \\\" + username + \\\" with email: \\\" + mail);\\n        return NodeOutcome.PASS;\\n    }\\n    else if (response.getStatus().getCode() === 401) {\\n        logger.error(config.nodeName + \\\": Access token is invalid: \\\" + response.getStatus() + \\\" for user: \\\" + username);\\n        return NodeOutcome.ERROR;\\n    }\\n    else if (response.getStatus().getCode() === 404) {\\n        logger.error(config.nodeName + \\\" IDM Email endpoint not found. HTTP Result: \\\" + response.getStatus() + \\\" for idmEndpoint: \\\" + idmEndpoint);\\n        return NodeOutcome.ERROR;\\n    }\\n    //Catch all error \\n    logger.error(config.nodeName + \\\": HTTP 5xx or Unknown error occurred. HTTP Result: \\\" + response.getStatus());\\n    return NodeOutcome.ERROR;\\n}\\n\\n/**\\n * Node entry point\\n */\\n\\nlogger.message(config.nodeName + \\\": node executing\\\");\\n\\nvar username;\\nvar accessToken;\\nvar idmEndpoint;\\nvar hotp;\\nvar mail;\\n\\nif (!(username = nodeState.get(\\\"_id\\\").asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve username from sharedState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(accessToken = nodeState.get(config.ACCESS_TOKEN_STATE_FIELD).asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve Access Token from transientState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(fqdn = systemEnv.getProperty(config.tenantFqdn))) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve tenant from ESV called: \\\" + config.tenantFqdn);\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(hotp = nodeState.get(\\\"oneTimePassword\\\").asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve HOTP from transientState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\n//If this is a registration journey adapt the following to try retrieve from sharedState\\nelse if (!(mail = String(idRepository.getAttribute(username, \\\"mail\\\").toArray()[0].toString()))) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve mail attribute from the idRepository\\\");\\n    outcome = NodeOutcome.FAIL;\\n}\\n\\n//If this is a registration journey adapt the following to try retrieve from sharedState\\nelse if (!(givenName = String(idRepository.getAttribute(username, \\\"givenName\\\").toArray()[0].toString()))) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve givenName attribute from the idRepository\\\");\\n    outcome = NodeOutcome.FAIL;\\n}\\n\\n//Execute function to send mail via IDM EMail Service\\nelse {\\n    outcome = sendMail(username, accessToken, fqdn, hotp, mail);\\n}\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        },
+        "b6f9c681-cd66-411e-bb0e-563033b7f1a8": {
+          "_id": "b6f9c681-cd66-411e-bb0e-563033b7f1a8",
+          "name": "send-hotp-idm-email-service",
+          "description": "Sends a HOTP via the IDM email service",
+          "script": "\"/**\\n * @file This script sends a HOTP to a user via the IDM SendGrid Email Service\\n * NOTE - The use of SendGrid is not supported in Production and must be changed to your own email service\\n * Steps are here: https://backstage.forgerock.com/docs/idcloud/latest/tenants/email-provider.html#external_smtp_email_server\\n * @version 0.2.0\\n * @keywords email mail hotp sharedState transientState\\n */\\n\\n/**\\n * Environment specific config \\n * Ensure the esv-tenant-fqdn is set as per the steps in this repo:\\n * https://stash.forgerock.org/projects/CS/repos/common_get_access_token_for_idm/browse/src/am\\n */\\n\\n/**\\n * Full Configuration \\n */\\n\\nvar config = {\\n    tenantFqdn: \\\"esv.tenant.fqdn\\\",\\n    ACCESS_TOKEN_STATE_FIELD: \\\"idmAccessToken\\\",\\n    nodeName: \\\"***sendHotpIDMEmailService\\\"\\n};\\n\\n/**\\n * Node outcomes\\n */\\n\\nvar NodeOutcome = {\\n    PASS: \\\"sent\\\",\\n    FAIL: \\\"noMail\\\",\\n    ERROR: \\\"error\\\"\\n};\\n\\n/**\\n * Log an HTTP response\\n * \\n * @param {Response} HTTP response object\\n */\\n\\nfunction logResponse(response) {\\n    logger.message(config.nodeName + \\\": Scripted Node HTTP Response: \\\" + response.getStatus() + \\\", Body: \\\" + response.getEntity().getString());\\n}\\n\\n/**\\n * Send email via the IDM Email Service\\n * \\n * @param {string} username - username of the user retrieved from sharedState\\n * @param {string} accessToken - Access Token retrieved from transientState\\n * @param {string} fqdn - Tenant fully qualified domain name retreived from an ESV\\n * @param {string} hotp - HOTP retrieved from transientState\\n * @param {string} mail - mail attribute retrieved from the idRepository. Note if this is a registration journey acquire mail from sharedState\\n */\\n\\nfunction sendMail(username, accessToken, fqdn, hotp, mail) {\\n    var idmEndpoint = \\\"https://\\\" + fqdn + \\\"/openidm/external/email?_action=send\\\";\\n    var response;\\n\\n    logger.message(config.nodeName + \\\": Sending email via the IDM email service for user: \\\" + username + \\\" with mail address: \\\" + mail + \\\" and HOTP: \\\" + hotp);\\n\\n    try {\\n        var request = new org.forgerock.http.protocol.Request();\\n        var requestBodyJson = {\\n            \\\"from\\\": \\\"saas@forgerock.com\\\",\\n            \\\"to\\\": mail,\\n            \\\"subject\\\": \\\"One Time Password\\\",\\n            \\\"body\\\": \\\"Here is your One Time Password. Please enter it into the login browser window: \\\" + hotp\\n        };\\n        request.setMethod('POST');\\n        request.setUri(idmEndpoint);\\n        request.getHeaders().add(\\\"Authorization\\\", \\\"Bearer \\\" + accessToken);\\n        request.getHeaders().add(\\\"Content-Type\\\", \\\"application/json\\\");\\n        request.setEntity(requestBodyJson);\\n        response = httpClient.send(request).get();\\n    }\\n    catch (e) {\\n        logger.error(config.nodeName + \\\": Unable to call IDM Email endpoint. Exception: \\\" + e);\\n        return NodeOutcome.ERROR;\\n    }\\n    logResponse(response);\\n\\n    if (response.getStatus().getCode() === 200) {\\n        logger.message(config.nodeName + \\\": Email sent for user: \\\" + username + \\\" with email: \\\" + mail);\\n        return NodeOutcome.PASS;\\n    }\\n    else if (response.getStatus().getCode() === 401) {\\n        logger.error(config.nodeName + \\\": Access token is invalid: \\\" + response.getStatus() + \\\" for user: \\\" + username);\\n        return NodeOutcome.ERROR;\\n    }\\n    else if (response.getStatus().getCode() === 404) {\\n        logger.error(config.nodeName + \\\" IDM Email endpoint not found. HTTP Result: \\\" + response.getStatus() + \\\" for idmEndpoint: \\\" + idmEndpoint);\\n        return NodeOutcome.ERROR;\\n    }\\n    //Catch all error \\n    logger.error(config.nodeName + \\\": HTTP 5xx or Unknown error occurred. HTTP Result: \\\" + response.getStatus());\\n    return NodeOutcome.ERROR;\\n}\\n\\n/**\\n * Node entry point\\n */\\n\\nlogger.message(config.nodeName + \\\": node executing\\\");\\n\\nvar username;\\nvar accessToken;\\nvar idmEndpoint;\\nvar hotp;\\nvar mail;\\n\\nif (!(username = nodeState.get(\\\"_id\\\").asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve username from sharedState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(accessToken = nodeState.get(config.ACCESS_TOKEN_STATE_FIELD).asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve Access Token from transientState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(fqdn = systemEnv.getProperty(config.tenantFqdn))) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve tenant from ESV called: \\\" + config.tenantFqdn);\\n    outcome = NodeOutcome.ERROR;\\n}\\n\\nelse if (!(hotp = nodeState.get(\\\"oneTimePassword\\\").asString())) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve HOTP from transientState\\\");\\n    outcome = NodeOutcome.ERROR;\\n}\\n//If this is a registration journey adapt the following to try retrieve from sharedState\\nelse if (!(mail = String(idRepository.getAttribute(username, \\\"mail\\\").toArray()[0].toString()))) {\\n    logger.error(config.nodeName + \\\": Unable to retrieve mail attribute from the idRepository\\\");\\n    outcome = NodeOutcome.FAIL;\\n}\\n\\n//Execute function to send mail via IDM EMail Service\\nelse {\\n    outcome = sendMail(username, accessToken, fqdn, hotp, mail);\\n}\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        }
+      },
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
